@@ -4,7 +4,10 @@ from ..base_column import BaseColumn
 class DataframeColumn(BaseColumn):
 
     def __init__(self, column_name: str, data: list, d_type: str, table_guid: str):
-        self.__column_name = column_name
+        if type(column_name) == tuple:
+            self.__column_name = column_name[0]
+        else:
+            self.__column_name = column_name
         self.__data = data
         self.__d_type = d_type
         self.__table_guid = table_guid
